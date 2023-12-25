@@ -1,0 +1,24 @@
+pipeline{
+  agent none{
+    stages{
+      stage('Build'){
+        agent {
+          docker{
+            image 'maven:latest'
+          }
+          sh mvn --version
+          sh 'echo "maven"'
+        }
+      }
+      stage('frontend'){
+        agent {
+          docker{
+            image 'node:latest'
+          }
+          sh node --version
+          sh 'echo "node"'
+        }
+      }
+    }
+  }
+}
