@@ -3,13 +3,11 @@ pipeline {
     stages {
       stage('Build') {
         agent {
-          docker {
-            image 'maven:latest'
-          }
-          steps{
+          docker { image 'maven:latest' }
+        }
+        steps{
             sh mvn --version
             sh 'echo "maven"'          
-          }
         }
       }
       stage('frontend'){
@@ -17,10 +15,10 @@ pipeline {
           docker{
             image 'node:latest'
           }
-          steps{
-            sh node --version
-            sh 'echo "node"'
-          }
+        }
+        steps{
+          sh node --version
+          sh 'echo "node"'
         }
       }
     }
