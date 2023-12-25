@@ -1,0 +1,20 @@
+pipeline {
+	agent {
+		docker {
+			image: 'maven:latest'
+			args '--user root -v /var/run/docker.sock:/var/run/docker.sock'
+		}
+	}
+	stages {
+		 stage('Checkout') {
+	     	steps {
+		        sh 'echo passed'
+		        //git branch: 'main', url: 'https://github.com/cloudjerry-14/Jenkins-CICD.git'
+	      	}
+	    }
+		stage('build') {
+			sh 'ls -ltr'
+	        sh 'cd springboot-k8s-argo-helm-CICD/jenkins-k8s-argo && mvn clean package'
+		}
+	}
+}
