@@ -12,5 +12,10 @@ pipeline {
         //git branch: 'main', url: 'https://github.com/cloudjerry-14/Jenkins-CICD.git'
       }
     }
+    stage('build'){
+      steps{
+        sh 'cd springboot-k8s-argo-helm-CICD/jenkins-k8s-argo && mvn clean package'
+      }
+    }
   }
 }
