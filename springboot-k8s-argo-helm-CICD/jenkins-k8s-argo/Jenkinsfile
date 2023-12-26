@@ -7,9 +7,6 @@ pipeline {
   }
   stages {
     stage('checkout') {    
-      agent{
-        docker {image 'ubuntu:latest'} 
-      }
       steps {
         sh 'echo "Passed"'
         git branch: 'main', url: 'https://github.com/cloudjerry-14/Jenkins-CICD.git'
