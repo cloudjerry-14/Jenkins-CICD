@@ -15,8 +15,8 @@ pipeline {
   	  }
       steps{
         sh 'echo "Maven Build"'
-        cd springboot-k8s-argo-helm-CICD/spring-boot-app
-        mvn clean compile
+        sh 'cd springboot-k8s-argo-helm-CICD/spring-boot-app'
+        sh 'mvn clean compile'
       }
     }
   }
