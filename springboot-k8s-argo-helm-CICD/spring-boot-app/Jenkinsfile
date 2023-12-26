@@ -12,11 +12,11 @@ pipeline {
     stage('Build'){
       steps{
         sh 'echo "mvn installation"'
-        sh 'apt update'
-        sh 'apt install openjdk-17-jdk'
+        sh 'sudo apt update'
+        sh 'sudo apt install openjdk-17-jdk'
         sh 'java -version'
-        sh 'apt install maven'
-        sh 'mv -version'
+        sh 'sudo apt install maven'
+        sh 'mvn -version'
   		sh 'mvn clean compile'
       }
     }
