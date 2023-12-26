@@ -1,7 +1,6 @@
 pipeline {
-  agent none{  
+  agent none
   stages {
-    
     stage('checkout') {
       agent {
         docker {
@@ -15,13 +14,14 @@ pipeline {
       }
     }
     stage('build') {
-      agent{
-        docker{ image 'maven:3.8.3-openjdk-17'}
+      agent {
+        docker {
+          image 'maven:3.8.3-openjdk-17'
+        }
       }
       steps {
         sh 'cd springboot-k8s-argo-helm-CICD/jenkins-k8s-argo && mvn clean package'
       }
     }
-  }
   }
 }
