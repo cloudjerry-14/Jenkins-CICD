@@ -7,8 +7,6 @@ pipeline {
       steps{
         sh 'echo "Checkout code"'
         git branch: 'main', url: 'https://github.com/iam-veeramalla/Jenkins-Zero-To-Hero.git'
-        sh 'echo "Maven Build"'
-        sh 'cd springboot-k8s-argo-helm-CICD/spring-boot-app'
       }
     }
     stage('Build'){
@@ -16,6 +14,8 @@ pipeline {
         docker {image 'maven:3.8.4-openjdk-17'}	
   	  }
       steps{
+        sh 'echo "Maven Build"'
+        sh 'cd springboot-k8s-argo-helm-CICD/spring-boot-app'
         sh 'mvn clean compile'
       }
     }
