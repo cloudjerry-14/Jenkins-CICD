@@ -14,7 +14,7 @@ pipeline {
         docker {image 'ubuntu:latest'}
       }
       steps{
-        sh 'echo CD'
+        sh 'echo "CD"'
         sh 'cd springboot-k8s-argo-helm-CICD/spring-boot-app'
       }
     }
