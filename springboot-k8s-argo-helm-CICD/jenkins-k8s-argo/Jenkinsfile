@@ -1,12 +1,14 @@
 pipeline {
-  agent {
-    docker {
-      image 'abhishekf5/maven-abhishek-docker-agent:v1'
-      args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
-    }
-  }
+  agent none{  
   stages {
+    
     stage('checkout') {
+      agent {
+        docker {
+          image 'abhishekf5/maven-abhishek-docker-agent:v1'
+          args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
+        }
+      }
       steps {
         sh 'echo "Passed"'
         git branch: 'main', url: 'https://github.com/cloudjerry-14/Jenkins-CICD.git'
@@ -20,5 +22,6 @@ pipeline {
         sh 'cd springboot-k8s-argo-helm-CICD/jenkins-k8s-argo && mvn clean package'
       }
     }
+  }
   }
 }
